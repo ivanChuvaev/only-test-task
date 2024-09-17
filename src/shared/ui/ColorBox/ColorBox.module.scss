@@ -1,0 +1,8 @@
+.wrapper {
+  height: 500px;
+  background: #f1f4fa;
+
+  @include mediaSTablet {
+    height: 250px;
+  }
+}

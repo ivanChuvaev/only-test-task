@@ -1,0 +1,35 @@
+@mixin mediaLaptop {
+  @media screen and (max-width: $laptop) {
+    @content;
+  }
+}
+
+@mixin mediaTablet {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mediaSTablet {
+  @media screen and (max-width: $s-tablet) {
+    @content;
+  }
+}
+
+@mixin mediaLMobile {
+  @media screen and (max-width: $l-mobile) {
+    @content;
+  }
+}
+
+@mixin mediaMMobile {
+  @media screen and (max-width: $m-mobile) {
+    @content;
+  }
+}
+
+@mixin mediaSMobile {
+  @media screen and (max-width: $s-mobile) {
+    @content;
+  }
+}
