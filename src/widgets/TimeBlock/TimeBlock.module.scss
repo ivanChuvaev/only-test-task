@@ -1,29 +1,99 @@
 .wrapper {
   position: relative;
-  padding-left: 80px;
   padding-top: 170px;
   padding-bottom: 104px;
-  padding-right: 40px;
 
   @include mediaSTablet {
-    padding-left: 20px;
-    padding-right: 20px;
     padding-top: 59px;
     padding-bottom: 13px;
   }
 }
 
-.top-left-gradient {
-  width: 5px;
-  height: 120px;
+.container {
+  padding-left: 80px;
+  padding-right: 80px;
+
+  @include mediaSTablet {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.decor {
   position: absolute;
-  top: 177px;
-  left: 0px;
-  background: linear-gradient(to bottom, #3877EE, #EF5DA8);
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 
   @include mediaSTablet {
     display: none;
   }
+
+  &__top-left-gradient {
+    width: 5px;
+    height: 120px;
+    position: absolute;
+    top: 177px;
+    left: 0px;
+    background: linear-gradient(to bottom, #3877EE, #EF5DA8);
+  }
+
+  &__left-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #42567A;
+    opacity: 0.1;
+  }
+
+  &__center-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    border-right: 1px solid #42567A;
+    opacity: 0.1;
+  }
+
+  &__right-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 1px solid #42567A;
+    opacity: 0.1;
+  }
+
+  &__center-horizontal-line {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    border-bottom: 1px solid #42567A;
+    opacity: 0.1;
+  }
+}
+
+.circle {
+  position: absolute !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  @include mediaSTablet {
+    display: none;
+  }
+}
+
+.content {
+  position: relative;
+  pointer-events: none;
 }
 
 .title {
@@ -82,27 +152,24 @@
   display: flex;
   flex-direction: column;
   gap: 56px;
+  position: relative;
 
   @include mediaSTablet {
     gap: 0;
-
-    & > *:nth-child(1) {
-      order: 2;
-    }
-
-    & > *:nth-child(2) {
-      order: 1;
-    }
   }
 }
 
 .swiper-transition-wrapper {
+  position: relative;
+
   &--enter {
     opacity: 0;
+    transform: translateY(10px);
   }
 
   &--enter-active {
     opacity: 1;
+    transform: translateY(0);
   }
 
   &--exit {
@@ -110,7 +177,16 @@
   }
 
   &--exit, &--enter-active {
-    transition: opacity linear 200ms;
+    transition: opacity linear 200ms, transform linear 200ms;
+  }
+}
+
+.swiper-container {
+  @extend .container;
+  pointer-events: all;
+
+  @include mediaSTablet {
+    padding: 0;
   }
 }
 
@@ -119,12 +195,29 @@
   overflow: hidden;
   cursor: grab;
 
+  --swiper-pagination-bullet-width: 6px;
+  --swiper-pagination-bullet-height: 6px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-color: #42567A;
+  --swiper-pagination-bullet-inactive-color: #42567A;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bottom: 12px;
+
   @include mediaSTablet {
-    min-height: 192px;
+    min-height: 255px;
   }
 }
 
 .swiper-control {
+  width: fit-content;
+  pointer-events: all;
+
+  @include mediaSTablet {
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+  }
+
   & > span {
     font-family: var(--font-family-pt-sans);
     font-size: 14px;
@@ -164,7 +257,7 @@
   transition: background-color linear 200ms, opacity linear 200ms;
 
   &:hover {
-    background: #f7f7f7;
+    background: white;
   }
 
   &:disabled {
@@ -180,11 +273,19 @@
 
 .slide {
   max-width: 320px;
+  min-height: 123px;
   padding-right: 80px;
+  transition-property: transform, opacity !important;
+  transition-duration: 200ms;
 
   @include mediaSTablet {
     max-width: 166px;
     padding-right: 25px;
+    opacity: 0.5;
+
+    &--active {
+      opacity: 1;
+    }
   }
 
   &:last-child {
@@ -217,4 +318,51 @@
       line-height: 145%;
     }
   }
+}
+
+.navigation-buttons {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 0;
+  box-sizing: border-box;
+
+  @include mediaSTablet {
+    display: none;
+  }
+
+  & > div {
+    position: relative;
+
+    & > button {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      box-shadow: 0px 0px 15px 0px #3877EE1A;
+      color: #3877EE;
+      cursor: pointer;
+  
+      &:disabled {
+        display: none;
+      }
+  
+      &:hover {
+        box-shadow: 0px 0px 15px px #3877EE1A;
+      }
+  
+      &:nth-child(1) {
+        left: 20px;
+      }
+  
+      &:nth-child(2) {
+        right: 20px;
+      }
+    }
+  }
+
 }

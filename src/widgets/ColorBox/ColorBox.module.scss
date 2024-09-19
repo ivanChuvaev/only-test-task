@@ -1,0 +1,21 @@
+.wrapper {
+  height: 250px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include mediaSTablet {
+    height: 150px;
+  }
+
+  & > div {
+    font-family: var(--font-family-pt-sans);
+    font-size: 40px;
+    color: #F4F5F9;
+
+    @include mediaSTablet {
+      font-size: 20px;
+    }
+  }
+}
