@@ -15,6 +15,7 @@ import useWindowWidth from "@/shared/hooks/useWindowWidth";
 import SwiperClass from "swiper";
 import cn from "classnames";
 import Cricle from "./Circle";
+import Icon from "@/shared/ui/Icon";
 
 export default function TimeBlock() {
   const [groupId, setGroupId] = useState(0);
@@ -118,14 +119,16 @@ export default function TimeBlock() {
                   onClick={handlePrev}
                   disabled={groupId <= 0}
                 >
-                  {"<"}
+                  <Icon name="arrows-arrow-left" />
+                  {/* {"<"} */}
                 </button>
                 <button
                   className={classes["swiper-button"]}
                   onClick={handleNext}
                   disabled={groupId >= EVENT_GROUPS.length - 1}
                 >
-                  {">"}
+                  <Icon name="arrows-arrow-right" />
+                  {/* {">"} */}
                 </button>
               </div>
             </div>
@@ -182,8 +185,8 @@ export default function TimeBlock() {
                   </Swiper>
                   <div className={cn(classes["navigation-buttons"])}>
                     <div>
-                      <button ref={navPrevRef}>{"<"}</button>
-                      <button ref={navNextRef}>{">"}</button>
+                      <button ref={navPrevRef}><Icon name="arrows-arrow-left" /></button>
+                      <button ref={navNextRef}><Icon name="arrows-arrow-right" /></button>
                     </div>
                   </div>
                 </div>

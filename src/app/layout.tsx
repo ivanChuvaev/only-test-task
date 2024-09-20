@@ -1,16 +1,16 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import 'normalize.css';
-import '@/shared/styles/globals.scss';
+import '@/shared/assets/styles/globals.scss';
 
 const ptSans = localFont({
   src: [
     {
-      path: '../shared/fonts/PTSans-Bold.ttf',
+      path: '../shared/assets/fonts/PTSans-Bold.ttf',
       weight: '700',
     },
     {
-      path: '../shared/fonts/PTSans-Regular.ttf',
+      path: '../shared/assets/fonts/PTSans-Regular.ttf',
       weight: '400',
     },
   ],
@@ -18,7 +18,7 @@ const ptSans = localFont({
 });
 
 const BebasNeue = localFont({
-  src: "../shared/fonts/BebasNeue-Regular.ttf",
+  src: "../shared/assets/fonts/BebasNeue-Regular.ttf",
   variable: "--font-family-bebas-neue",
   weight: "100 900",
 });

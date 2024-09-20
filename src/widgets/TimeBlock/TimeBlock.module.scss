@@ -346,13 +346,17 @@
       box-shadow: 0px 0px 15px 0px #3877EE1A;
       color: #3877EE;
       cursor: pointer;
+      transition: box-shadow linear 200ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
   
       &:disabled {
         display: none;
       }
   
       &:hover {
-        box-shadow: 0px 0px 15px px #3877EE1A;
+        box-shadow: 0px 0px 20px 8px #3877EE1A;
       }
   
       &:nth-child(1) {
