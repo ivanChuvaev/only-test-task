@@ -1,0 +1,376 @@
+.wrapper {
+  position: relative;
+  padding-top: 170px;
+  padding-bottom: 104px;
+
+  @include mediaSTablet {
+    padding-top: 59px;
+    padding-bottom: 13px;
+  }
+}
+
+.container {
+  padding-left: 80px;
+  padding-right: 80px;
+
+  @include mediaSTablet {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+}
+
+.decor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+
+  @include mediaSTablet {
+    display: none;
+  }
+
+  &__top-left-gradient {
+    width: 5px;
+    height: 120px;
+    position: absolute;
+    top: 177px;
+    left: 0px;
+    background: linear-gradient(to bottom, #3877ee, #ef5da8);
+  }
+
+  &__left-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid #42567a;
+    opacity: 0.1;
+  }
+
+  &__center-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: calc(50% - 1px);
+    border-right: 1px solid #42567a;
+    opacity: 0.1;
+  }
+
+  &__right-vertical-line {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-left: 1px solid #42567a;
+    opacity: 0.1;
+  }
+
+  &__center-horizontal-line {
+    width: 100%;
+    height: 0;
+    position: absolute;
+    top: calc(50% - 1px);
+    right: 0;
+    border-bottom: 1px solid #42567a;
+    opacity: 0.1;
+  }
+}
+
+.circle {
+  position: absolute !important;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+
+  @include mediaSTablet {
+    display: none;
+  }
+}
+
+.content {
+  position: relative;
+  pointer-events: none;
+}
+
+.title {
+  font-family: PT Sans;
+  font-weight: 700;
+  font-size: 56px;
+  line-height: 120%;
+  color: #42567a;
+  margin-top: 0;
+  margin-bottom: 96px;
+
+  @include mediaSTablet {
+    margin-bottom: 56px;
+    font-size: 20px;
+  }
+}
+
+.title-numbers {
+  font-family: PT Sans;
+  font-weight: 700;
+  font-size: 200px;
+  line-height: 160px;
+  letter-spacing: -2%;
+  text-align: center;
+  margin-bottom: 137px;
+
+  @include mediaSTablet {
+    font-size: 56px;
+    line-height: 130%;
+    margin-bottom: 57px;
+  }
+
+  & > span {
+    &:nth-child(1) {
+      color: #5d5fef;
+    }
+
+    &:nth-child(2) {
+      color: #ef5da8;
+    }
+  }
+}
+
+.divider {
+  display: none;
+  height: 0px;
+  border-bottom: 1px solid #c7cdd9;
+  margin-bottom: 20px;
+
+  @include mediaSTablet {
+    display: block;
+  }
+}
+
+.swiper-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  position: relative;
+
+  @include mediaSTablet {
+    gap: 0;
+  }
+}
+
+.swiper-transition-wrapper {
+  position: relative;
+
+  &--enter {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  &--enter-active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  &--exit {
+    opacity: 0;
+  }
+
+  &--exit,
+  &--enter-active {
+    transition:
+      opacity linear 200ms,
+      transform linear 200ms;
+  }
+}
+
+.swiper-container {
+  @extend .container;
+  pointer-events: all;
+
+  @include mediaSTablet {
+    padding: 0;
+  }
+}
+
+.swiper {
+  width: 100%;
+  overflow: hidden;
+  cursor: grab;
+
+  --swiper-pagination-bullet-width: 6px;
+  --swiper-pagination-bullet-height: 6px;
+  --swiper-pagination-bullet-horizontal-gap: 5px;
+  --swiper-pagination-color: #42567a;
+  --swiper-pagination-bullet-inactive-color: #42567a;
+  --swiper-pagination-bullet-inactive-opacity: 0.4;
+  --swiper-pagination-bottom: 12px;
+
+  @include mediaSTablet {
+    min-height: 255px;
+  }
+}
+
+.swiper-control {
+  width: fit-content;
+  pointer-events: all;
+
+  @include mediaSTablet {
+    position: absolute;
+    bottom: 0px;
+    z-index: 2;
+  }
+
+  & > span {
+    font-family: PT Sans;
+    font-size: 14px;
+    line-height: 130%;
+    font-weight: 400;
+    color: #42567a;
+    display: block;
+    margin-bottom: 20px;
+
+    @include mediaSTablet {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+.swiper-control-buttons {
+  display: flex;
+  gap: 20px;
+
+  @include mediaSTablet {
+    gap: 8px;
+  }
+}
+
+.swiper-button {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  box-sizing: border-box;
+  border: 1px solid #42567a80;
+  color: #42567a;
+  background: transparent;
+  cursor: pointer;
+  transition:
+    background-color linear 200ms,
+    opacity linear 200ms;
+
+  &:hover {
+    background: white;
+  }
+
+  &:disabled {
+    background: transparent;
+    opacity: 50%;
+  }
+
+  @include mediaSTablet {
+    width: 25px;
+    height: 25px;
+  }
+}
+
+.slide {
+  max-width: 320px;
+  min-height: 123px;
+  padding-right: 80px;
+  transition-property: transform, opacity !important;
+  transition-duration: 200ms;
+
+  @include mediaSTablet {
+    max-width: 166px;
+    padding-right: 25px;
+    opacity: 0.5;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &:last-child {
+    padding-right: 0;
+  }
+
+  h3 {
+    font-family: PT Sans;
+    font-size: 25px;
+    font-weight: 400;
+    line-height: 120%;
+    color: #3877ee;
+    margin-top: 0;
+    margin-bottom: 15px;
+
+    @include mediaSTablet {
+      font-size: 16px;
+    }
+  }
+
+  p {
+    font-family: PT Sans;
+    font-size: 20px;
+    line-height: 130%;
+    color: #42567a;
+    margin: 0;
+
+    @include mediaSTablet {
+      font-size: 14px;
+      line-height: 145%;
+    }
+  }
+}
+
+.navigation-buttons {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 0;
+  box-sizing: border-box;
+
+  @include mediaSTablet {
+    display: none;
+  }
+
+  & > div {
+    position: relative;
+
+    & > button {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: white;
+      border: none;
+      box-shadow: 0px 0px 15px 0px #3877ee1a;
+      color: #3877ee;
+      cursor: pointer;
+      transition: box-shadow linear 200ms;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &:disabled {
+        display: none;
+      }
+
+      &:hover {
+        box-shadow: 0px 0px 20px 8px #3877ee1a;
+      }
+
+      &:nth-child(1) {
+        left: 20px;
+      }
+
+      &:nth-child(2) {
+        right: 20px;
+      }
+    }
+  }
+}
